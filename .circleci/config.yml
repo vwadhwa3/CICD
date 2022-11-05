@@ -53,12 +53,12 @@ jobs:
             - ./venv
           key: Dockerfile-lint
 
-      # # run lint
-      # - run:
-      #     name: run lints
-      #     command: |
-      #       . venv/bin/activate
-      #       make lint
+      # run lint
+      - run:
+          name: run lints
+          command: |
+            . venv/bin/activate
+            make lint
 
   upload-docker:
     docker:
@@ -73,7 +73,7 @@ jobs:
       - run:
           name: Build docker image
           command: |
-            docker build -t=$DOCKER_IMAGE_NAME .
+            docker build --tag=$DOCKER_IMAGE_NAME .
             docker image ls
       - run:
           name: Upload Docker to Dockerhub
@@ -141,4 +141,4 @@ workflows:
       - upload-docker:
           requires: [docker-build]
       - deploy-app-eks:
-          requires: [docker-build]
+          requires: [docker-build,upload-docker]

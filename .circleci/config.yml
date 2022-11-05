@@ -33,7 +33,7 @@ commands:
 jobs:
   docker-build:
     docker:
-      - image: circleci/windows@2.2.0
+      - image: python:3.7.3-stretch
 
     steps:
       - checkout

@@ -54,11 +54,11 @@ jobs:
           key: Dockerfile-lint
 
       # run lint
-      - run:
-          name: run lints
-          command: |
-            . venv/bin/activate
-            make lint
+      # - run:
+      #     name: run lints
+      #     command: |
+      #       . venv/bin/activate
+      #       make lint
 
   upload-docker:
     docker:
